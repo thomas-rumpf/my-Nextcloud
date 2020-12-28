@@ -22,12 +22,13 @@ These are the main steps to be executed:
 1. enjoy Netxcloud :smiley:
 
 ### Software Installation
-Get the[Raspberry Pi OS](https://www.raspberrypi.org/software/) of your choice and flash to your SD card. There are guides available on the internet for all popular operating systems on how to flash an image to a SD card. If you're planning to run your Raspi headless you my want to use the **Lite** version. Keep in mind to enable **ssh** access by placing a file named ` ssh `, without any extension, onto the boot partition of the SD card from another computer. When the Pi boots, it looks for the ssh file. If it is found, SSH is enabled and the file is deleted. The content of the file does not matter; it could contain text, or nothing at all.
-as described here
+Get the [Raspberry Pi OS](https://www.raspberrypi.org/software/) of your choice and flash to your SD card. There are guides available on the internet for all popular operating systems on how to flash an image to a SD card. If you're planning to run your Raspi headless you my want to use the **Lite** version. Keep in mind to enable **ssh** access by placing a file named ` ssh `, without any extension, onto the boot partition of the SD card from another computer. When the Pi boots, it looks for the ssh file. If it is found, SSH is enabled and the file is deleted. The content of the file does not matter; it could contain text, or nothing at all.
+
+Next install Docker and Docker-Compose on your Pi. If you're looking for help, start here: [Docker comes to Raspberry Pi](https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/).
 
 ### Project Structure
 
-### Enable cache
+### Enable caching
 go to
 
 ```php
