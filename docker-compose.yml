@@ -1,0 +1,55 @@
+version: '2'
+
+services:
+  db:
+    image: ghcr.io/linuxserver/mariadb
+    container_name: mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=xxxx
+      - TZ=Europe/Berlin
+      - MYSQL_DATABASE=ncdb
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=xxxx
+      - MYSQL_INITDB_SKIP_TZINFO=1
+    volumes:
+      - ~/my-nextcloud/db/config:/config
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+
+  cache:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ~/my-nextcloud/cache:/data
+    entrypoint: redis-server --appendonly yes
+    restart: always
+ 
+  app:
+    image: ghcr.io/linuxserver/nextcloud
+    container_name: nextcloud
+    restart: always
+    ports:
+      - 8080:80
+      - 443:443
+    links:
+      - db
+      - cache
+    volumes:
+      - /mnt/usb0/nextcloud/data:/data
+      - ~/my-nextcloud/app/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - MYSQL_PASSWORD=xxxx
+      - MYSQL_DATABASE=ncdb
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db
+      - REDIS_HOST=cache
+      - NEXTCLOUD_ADMIN_USER=xxxx
+      - NEXTCLOUD_ADMIN_PASSWORD=xxxx
