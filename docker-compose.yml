@@ -7,14 +7,14 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - MYSQL_ROOT_PASSWORD=xxxx
-      - TZ=Europe/Berlin
+      - MYSQL_ROOT_PASSWORD=  # make sure to set your password here
+      - TZ=Europe/Berlin # change for your time zone
       - MYSQL_DATABASE=ncdb
       - MYSQL_USER=nextcloud
       - MYSQL_PASSWORD=xxxx
       - MYSQL_INITDB_SKIP_TZINFO=1
     volumes:
-      - ~/my-nextcloud/db/config:/config
+      - /path/to/data:/config
     ports:
       - 3306:3306
     restart: unless-stopped
@@ -25,7 +25,7 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - ~/my-nextcloud/cache:/data
+      - /path/to/data:/data
     entrypoint: redis-server --appendonly yes
     restart: always
  
@@ -40,16 +40,16 @@ services:
       - db
       - cache
     volumes:
-      - /mnt/usb0/nextcloud/data:/data
-      - ~/my-nextcloud/app/config:/config
+      - /path/to/data:/data
+      - /path/to/appdata:/config
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Berlin
-      - MYSQL_PASSWORD=xxxx
+      - MYSQL_PASSWORD=  # make sure to set your password here
       - MYSQL_DATABASE=ncdb
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
       - REDIS_HOST=cache
-      - NEXTCLOUD_ADMIN_USER=xxxx
-      - NEXTCLOUD_ADMIN_PASSWORD=xxxx
+      - NEXTCLOUD_ADMIN_USER= # make sure to set your user here
+      - NEXTCLOUD_ADMIN_PASSWORD=  # make sure to set your password here
