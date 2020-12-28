@@ -29,9 +29,9 @@ $CONFIG = array (
     'port' => 6379,
   ],
   'datadirectory' => '/data',
-  'instanceid' => 'oc2tpielhhxd',
-  'passwordsalt' => 'XUeMHs9bAXpDnwQJ5T/Oud32JpEjRB',
-  'secret' => 'Ud0VPa9XgGjqYz6iqP+GFW84zn85oJLMNTcCwQzh0GR9Isig',
+  'instanceid' =>  # will be created automatically during container initialization 
+  'passwordsalt' =>  # will be created automatically during container initialization
+  'secret' =>  # will be created automatically during container initialization
   'trusted_domains' => 
   array (
     0 => 'xxx.xxx.xxx.xxx', # set your host IP address here
