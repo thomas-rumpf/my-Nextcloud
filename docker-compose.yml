@@ -2,7 +2,7 @@ version: '2'
 
 services:
   db:
-    image: ghcr.io/linuxserver/mariadb
+    image: linuxserver/mariadb:110.3.18mariabionic-ls37
     container_name: mariadb
     environment:
       - PUID=1000
@@ -12,7 +12,6 @@ services:
       - MYSQL_DATABASE=ncdb
       - MYSQL_USER=nextcloud
       - MYSQL_PASSWORD=xxxx
-      - MYSQL_INITDB_SKIP_TZINFO=1
     volumes:
       - /path/to/data:/config
     ports:
@@ -30,7 +29,7 @@ services:
     restart: always
  
   app:
-    image: ghcr.io/linuxserver/nextcloud
+    image: linuxserver/nextcloud
     container_name: nextcloud
     restart: always
     ports:
