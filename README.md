@@ -57,40 +57,6 @@ After you have started your containers with ` docker-compose up -d ` you will ne
 
 ```
 
-Your ` config.php ` should now look like this:
-
-```php
-
-<?php
-$CONFIG = array (
-  'memcache.local' => '\\OC\\Memcache\\APCu',
-  'memcache.distributed' => '\\OC\\Memcache\\Redis',
-  'memcache.locking' => '\\OC\\Memcache\\Redis',
-  'redis' => [
-    'host' => 'xxx.xxx.xxx.xxx', # set your host IP address here
-    'port' => 6379,
-  ],
-  'datadirectory' => '/data',
-  'instanceid' =>  # will be created automatically during container initialization 
-  'passwordsalt' =>  # will be created automatically during container initialization
-  'secret' =>  # will be created automatically during container initialization
-  'trusted_domains' => 
-  array (
-    0 => 'xxx.xxx.xxx.xxx', # set your host IP address here
-  ),
-  'dbtype' => 'mysql',
-  'version' => '20.0.3.2',
-  'overwrite.cli.url' => 'https://xxx.xxx.xxx.xxx', # set your host IP address here
-  'dbname' => 'ncdb',
-  'dbhost' => 'db',
-  'dbport' => '',
-  'dbtableprefix' => 'oc_',
-  'dbuser' => 'nextcloud',
-  'dbpassword' => 'xxxx',
-  'installed' => true,
-);
-
-```
 In case you want to verify redis cache is enabled open a terminal and ssh into your Pi. Go to the directory that contains your docker-compose.yml file. 
 You will need to get into the redis container with the following command ` docker exec -it redis sh `. Now enter ` redis-cli ` and ` monitor `. You'll get an OK message. Leave the terminal open while you access your Nextcloud via the browser. If you see log messages being displayed on the terminal while brwosing your nextcloud files and photos, redis cache is working.
 
